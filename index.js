@@ -1,23 +1,21 @@
 function createGrid(number){
-    const container = document.querySelector('.grid');//reference container id that already exists in html
-    for(var i = 0; i < number ; i++){
-            const column = document.createElement('div');// create new element
-            column.classList.add = "column";//add content to the element
-        // row.style.cssText = " border-color: black; background-color: red; width: 300px; height: 30px;";
-            //document.body.appendChild(div); this works as well but the body is the parent
-            container.appendChild(column);
-            var a = 0;
-            //column is block element 
-            for(var j = 0; j < number ; j++){// we are using each row box we create as a house/container for the rest of the boxes in column
-                //var a = 0;
-                const row = document.createElement('div');
-                row.classList.add("row");
-               // a++;
-                row.style.cssText = " border-style: solid; border-width:0.25px 0.25px; border-color: black; background-color: #F9FAFB; width: 30px; height: 30px;";
-                column.appendChild(row);
-            }
-            
-           // container.appendChild(column);
+    const container = document.querySelector('.grid');
+  
+    container.style.gridTemplateColumns = `repeat(${number},1fr)`;
+    container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
+  
+  
+   const containerWidth = parseInt(container.style.width);
+  const containerHeight = parseInt(container.style.height);
+  
+    for(let i = 0; i < (number*number); i++){
+      const cell = document.createElement('div');
+     cell.style.maxWidth = `${(containerWidth - (number - 1)) / number}px`;
+      cell.style.maxHeight = `${(containerHeight - (number - 1)) / number}px`;
+      
+      cell.classList.add('row');
+     // cell.innerText = i;
+      container.appendChild(cell);
     }
     dragEffect();
 }
@@ -30,10 +28,6 @@ document.getElementById("chooseGrid").addEventListener('click',function(e){
    if(newFormat != currentFormat){
         deleteGrid();
         createGrid(newFormat);
-       // dragEffect();
-       
-       
-      //  console.log('here');
    }
    else{
         console.log(`it is already ${currentFormat} silly`);//string-interpolation only works with ` `. 
@@ -66,5 +60,3 @@ function hover(event){
        
     }
 }
-
-
