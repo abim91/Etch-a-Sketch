@@ -2,6 +2,7 @@ var currentFormat = 4;
 createGrid(currentFormat);
 colorPicker();
 askUser();
+clear();
 var color = "blue";
 
 function createGrid(number){
@@ -32,6 +33,7 @@ document.getElementById("chooseGrid").addEventListener('click',function(e){
         if(newFormat != currentFormat){
                 deleteGrid();
                 createGrid(newFormat);
+                currentFormat = newFormat;
         }
         else{
                 console.log(`it is already ${currentFormat} silly`);//string-interpolation only works with ` `. 
@@ -55,6 +57,14 @@ function colorPicker(){
         createGrid(currentFormat);
         color = colorV.value;
 
+    })
+}
+
+function clear(){
+    const clear = document.getElementById("clear");
+    clear.addEventListener("click",function(){
+        deleteGrid();
+        createGrid(currentFormat);
     })
 }
 
