@@ -1,3 +1,9 @@
+var currentFormat = 4;
+createGrid(currentFormat);
+colorPicker();
+askUser();
+var color = "blue";
+
 function createGrid(number){
     const container = document.querySelector('.grid');
   
@@ -19,28 +25,41 @@ function createGrid(number){
     }
     dragEffect();
 }
-
-var currentFormat = 4;
-createGrid(currentFormat);
+function askUser(){
 document.getElementById("chooseGrid").addEventListener('click',function(e){
-   var newFormat= prompt("Select How many grid you want,up to 50");
-  
-   if(newFormat != currentFormat){
-        deleteGrid();
-        createGrid(newFormat);
-   }
-   else{
-        console.log(`it is already ${currentFormat} silly`);//string-interpolation only works with ` `. 
-   }
+   var newFormat= prompt("Select How many grid to 64");
+    if(newFormat <= 64){
+        if(newFormat != currentFormat){
+                deleteGrid();
+                createGrid(newFormat);
+        }
+        else{
+                console.log(`it is already ${currentFormat} silly`);//string-interpolation only works with ` `. 
+        }
+    }
+    else{
+        alert("Your choice is too high");
+    }
    
 });
+}
 
+function colorPicker(){
+    
+    const colorPicker = document.getElementById("color-picker");
+    const image = document.getElementById("image");
+    let colorV = document.getElementById("color-picker");
 
+    colorPicker.addEventListener("input", function(){
+        deleteGrid();
+        createGrid(currentFormat);
+        color = colorV.value;
 
-// creating hover effect, hover function is used in event listener, to create effect
+    })
+}
 
 function hover(event){
-    event.target.style.backgroundColor = "black";
+    event.target.style.backgroundColor = color;
  }
 
  //item is a collection of element returned by the function
