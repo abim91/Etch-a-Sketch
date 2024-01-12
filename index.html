@@ -10,23 +10,31 @@
     
   </head>
   <body>
-    <button id = "chooseGrid" >Click</button>
-    
-    <div class = "parentC">
+
+      <header class = "header">
+        <h1>Etch-A-Sketch</h1>
+      </header>
+      <main class = "parentC">
 
 
-      <div id="options">
+        <div id="options">
+
+        <!---  <img id="image" src="image.jpg">-->
         
-        <img id="image" src="image.jpg">
-        <label for = "color-picker">Select a color:</label>
-        <input id = "color-picker" type = "color">
+        <label for = "color-picker">Select a color: <input id = "color-picker" name = "color-picker" type = "color">
+        </label>
+      </br>
+        <button id = "chooseGrid" >Change #</button> </br>
+      </br>
         <button id = "clear">Clear</button>
+
         
-      </div>
-      
-       
-      <div class = "grid"></div>
-    </div>
+        </div>
+        <div class = "grid"></div>
+
+
+        
+      </main>
   </body>
   
 </html>

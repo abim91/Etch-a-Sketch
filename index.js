@@ -1,9 +1,9 @@
-var currentFormat = 4;
+var currentFormat = 16;
 createGrid(currentFormat);
 colorPicker();
 askUser();
 clear();
-var color = "blue";
+var color = "black";
 
 function createGrid(number){
     const container = document.querySelector('.grid');
@@ -28,8 +28,9 @@ function createGrid(number){
 }
 function askUser(){
 document.getElementById("chooseGrid").addEventListener('click',function(e){
-   var newFormat= prompt("Select How many grid to 64");
-    if(newFormat <= 64){
+   var newFormat= prompt("Select Up To 64");
+ 
+    if((newFormat <= 64) || null){
         if(newFormat != currentFormat){
                 deleteGrid();
                 createGrid(newFormat);
